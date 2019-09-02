@@ -4,11 +4,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const config = require('./config');
-const swaggerDoc = require('./swaggerDoc');
 const swaggerDocument = require('./swagger.json');
 
 const swaggerUi = require('swagger-ui-express');
-const swaggerJsdoc = require('swagger-jsdoc');
 
 const app = express();
 const router = express.Router();
@@ -37,8 +35,6 @@ app.use('/products', productRoute);
 app.use('/customers', customerRoute);
 app.use('/orders', orderRoute);
 
-    
-swaggerDoc(app);
 
 app.use('/', router);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
